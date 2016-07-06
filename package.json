@@ -1,0 +1,22 @@
+{
+  "name": "learnlodash",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-plugin-istanbul": "1.0.0",
+    "babel-preset-es2015": "6.9.0",
+    "jasmine-core": "2.3.4",
+    "karma": "0.13.22",
+    "karma-babel-preprocessor": "6.0.1",
+    "karma-coverage": "1.0.0",
+    "karma-jasmine": "1.0.2",
+    "karma-phantomjs-launcher": "1.0.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-spec-reporter": "0.0.26",
+    "phantomjs-prebuilt": "2.1.7"
+  },
+  "scripts": {
+    "start": "karma start --no-single-run --auto-watch",
+    "test": "karma start --single-run"
+  }
+}
