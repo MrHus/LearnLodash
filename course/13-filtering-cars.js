@@ -68,6 +68,13 @@
     Try to rewrite the following function using lodash:
   */
   function platesForEmployeesAt(cars, company) {
+    return _(cars)
+      .filter((car) => car.owner.worksAt === company)
+      // Shorthand to only get one property from an object.
+      .map('plate')
+      .value();
+
+    /*
     let plates = [];
 
     for (let i = 0; i < cars.length; i++) {
@@ -79,9 +86,10 @@
     }
 
     return plates;
+    */
   }
 
-  describe('Lab 6', () => {
+  describe('Lab 13', () => {
     it('should know how to get all license plates for "42 BV" employees', () => {
       expect(platesForEmployeesAt(cars, '42 BV')).toEqual(['PH-HL-16', 'A-42-Q?']);
     });

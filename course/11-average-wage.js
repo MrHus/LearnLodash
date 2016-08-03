@@ -24,6 +24,9 @@
     Try to rewrite the following function using lodash:
   */
   function averageWage(persons) {
+    return _.meanBy(persons, 'wage');
+
+    /*
     let total = 0;
 
     for(let i = 0; i < persons.length; i++) {
@@ -33,9 +36,10 @@
     }
 
     return total / persons.length;
+    */
   }
 
-  describe('Lab 10', () => {
+  describe('Lab 11', () => {
     it('should know how to calculate the average wage', () => {
       expect(averageWage(persons)).toBe(4200);
     });

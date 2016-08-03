@@ -36,6 +36,14 @@
     Try to rewrite the following function using lodash:
   */
   function getLabels(issues) {
+    return _(issues)
+      // if we use 'map' here we get a two dimensional array
+      .flatMap('labels')
+      // Only keep the unique values from all labels.
+      .uniq()
+      .value();
+
+    /*
     // The keys will be the labels and the values to.
     const labelStore = {};
 
@@ -59,9 +67,10 @@
     }
 
     return labels;
+    */
   }
 
-  describe('Lab 28', () => {
+  describe('Lab 15', () => {
     it('should know how to get all unique labels from the issues.', () => {
       const expected = [
         'bug',

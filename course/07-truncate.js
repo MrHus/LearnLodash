@@ -13,14 +13,18 @@
     See if you can rewrite this function to use a lodash utility instead.
   */
   function truncate(sentence, omission='...', maxlength=12) {
+    return _.truncate(sentence, { omission, length: maxlength });
+
+    /*
     if (sentence.length > maxlength) {
       return sentence.substring(0, maxlength - omission.length) + omission;
     } else {
       return sentence;
     }
+    */
   }
 
-  describe('Lab 2', () => {
+  describe('Lab 07', () => {
     it('should not truncate sentences which are short enough', () => {
       expect(truncate('String')).toBe("String");
       expect(truncate('Short string')).toBe("Short string");

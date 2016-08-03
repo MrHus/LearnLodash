@@ -22,6 +22,9 @@
     Try to rewrite the following function using lodash:
   */
   function isAuthorized(userRights, requiredRight) {
+    return _.includes(userRights, requiredRight);
+
+    /*
     for (let i = 0; i < userRights.length; i++) {
       const userRight = userRights[i];
 
@@ -31,9 +34,10 @@
     }
 
     return false;
+    */
   }
 
-  describe('Lab 5', () => {
+  describe('Lab 06', () => {
     it('should allow the action if the user has the right', () => {
       expect(isAuthorized([RIGHT.ADD], RIGHT.ADD)).toBe(true);
     });

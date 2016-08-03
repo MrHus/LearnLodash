@@ -25,6 +25,9 @@
     Try to rewrite the following function using lodash:
   */
   function getThreeRandomTips(tips) {
+    return _.sampleSize(tips, 3);
+
+    /*
     const selected = [];
 
     // Copy tips since we are going to manipulate it.
@@ -41,9 +44,10 @@
     }
 
     return selected;
+    */
   }
 
-  describe('Lab 30', () => {
+  describe('Lab 03', () => {
     it('should know how to select three random tips', () => {
       const selected = getThreeRandomTips(tips);
       expect(selected.length).toBe(3);

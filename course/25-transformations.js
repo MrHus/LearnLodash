@@ -21,6 +21,11 @@
     Try to rewrite the following function using lodash:
   */
   function processEmployees(employees) {
+    const processEmployee = _.flow([giveRaise, giveCar, haveHrTalk, christmasDinner, giveBonus]);
+
+    return _.map(employees, processEmployee);
+
+    /*
     for (let i = 0; i < employees.length; i++) {
       let employee = employees[i];
 
@@ -32,6 +37,7 @@
     }
 
     return employees;
+    */
   }
 
   /* ===== DO NOT CHANGE THESE FUNCTIONS ===== */
@@ -68,7 +74,7 @@
     return employee;
   }
 
-  describe('Lab 15', () => {
+  describe('Lab 25', () => {
     it('should know how to process the employees', () => {
       const expected = [
         {

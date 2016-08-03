@@ -14,6 +14,9 @@
     Try to rewrite the following function using lodash:
   */
   function debouncedRequest(requestFn) {
+    return _.debounce(requestFn, 200);
+
+    /*
     let lastTimeout;
 
     return function(number) {
@@ -23,9 +26,10 @@
         requestFn(number);
       }, 200);
     }
+    */
   }
 
-  describe('Lab 16', () => {
+  describe('Lab 05', () => {
     it('should ignore request which are very close to each other, and only send the last one', (done) => {
       const spy = jasmine.createSpy();
 
@@ -48,26 +52,6 @@
         expect(spy).toHaveBeenCalledWith(5);
         done();
       }, 310);
-    });
-
-    it('should after a cooldown send other values again', () => {
-      const spy = jasmine.createSpy();
-
-      const request = debouncedRequest(spy);
-
-      request(1);
-
-      setTimeout(() => {
-        request(2);
-        request(3);
-      }, 50);
-
-      setTimeout(() => {
-        expect(spy.calls.count()).toBe(2);
-        expect(spy).toHaveBeenCalledWith(1);
-        expect(spy).toHaveBeenCalledWith(3);
-        done();
-     }, 260);
     });
   });
 })();

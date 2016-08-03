@@ -49,6 +49,20 @@
     Try to rewrite the following function using lodash:
   */
   function createPhoneBook(persons) {
+    return _(persons)
+      // First put all persons in buckets based on the first letter of the lastname
+      .groupBy((person) => getLowerCasedLastName(person.name).charAt(0))
+      // Now sort the unsorted persons, and put it in an object with the letter.
+      .map((unsortedPersons, letter) => {
+        const persons = _.sortBy(unsortedPersons, (person) => getLowerCasedLastName(person.name));
+
+        return { letter, persons };
+      })
+      // Now sort it based on the letter so it is in alphabetical order
+      .sortBy('letter')
+      .value();
+
+    /*
     const sortedPersons = persons.sort(function(personA, personB) {
       const aLastName = getLowerCasedLastName(personA.name);
       const bLastName = getLowerCasedLastName(personB.name);
@@ -85,6 +99,7 @@
     }
 
     return phoneBook;
+    */
   }
 
   /* ===== DO NOT CHANGE THESE FUNCTIONS ===== */
@@ -94,7 +109,7 @@
     return words[words.length - 1].toLowerCase();
   }
 
-  describe('Lab 18', () => {
+  describe('Lab 29', () => {
     it('should know how to create a phone book array', () => {
       const expected = [
         {

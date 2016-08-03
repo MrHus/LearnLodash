@@ -15,6 +15,38 @@
     Try to rewrite the following function using lodash:
   */
   function compressRoster(roster) {
+    // Copy the roster because we are going to manipulate it.
+    let rosterCopy = _.cloneDeep(roster);
+
+    return _.transform(rosterCopy, (compressedRoster) => {
+      // When the rosterCopy is empty we are done.
+      if (_.isEmpty(rosterCopy)) {
+        return false; // Returning false aborts _.transform.
+      }
+
+      // Take the first week of the rosterCopy, so we can determine the start of a weekGroup.
+      const firstWeek = _.first(rosterCopy);
+
+      // Take until the courses differ from the firstWeek.
+      const matchingWeeks = _.takeWhile(rosterCopy, (week) => _.isEqual(week.courses, firstWeek.courses));
+
+      // Take the last week of all the matching weeks so we can know the last week of a weekGroup.
+      const lastWeek = _.last(matchingWeeks);
+
+      const weekGroup = { courses: firstWeek.courses, week: firstWeek.week };
+
+      if (_.isEqual(firstWeek.week, lastWeek.week) === false) {
+        weekGroup.week += " / " + lastWeek.week;
+      }
+
+      // Remove all weeks that we have already processed.
+      rosterCopy = _.drop(rosterCopy, matchingWeeks.length);
+
+      // Add the processed weeks to the compressedRoster
+      return compressedRoster.push(weekGroup);
+    }, []);
+
+    /*
     const compressedRoster = [];
 
     // The first weekGroup always starts at the first week in the roster
@@ -38,10 +70,8 @@
 
       // If last iteration always add the weekGroup
       if (i === roster.length - 1) {
-        /*
-          Only alter the week if it is part of a weekGroup, otherwise
-          it is just a single week.
-        */
+        // Only alter the week if it is part of a weekGroup, otherwise
+        // it is just a single week.
         if (week.week !== weekGroup.week) {
           weekGroup.week = weekGroup.week + " / " + week.week;
         }
@@ -66,9 +96,11 @@
 
       return true;
     }
+
+    */
   }
 
-  describe('Lab 19', () => {
+  describe('Lab 30', () => {
     it('should know how to compress a roster were all weeks are the same', () => {
       // Defines a roster for a university divided in periods.
       const roster = [

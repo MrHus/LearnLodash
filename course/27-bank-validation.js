@@ -16,6 +16,31 @@
       return false;
     }
 
+    if (_.get(person, 'company.wage', 1499) < 1500) {
+      return false;
+    }
+
+    if (_.get(person, 'company.owner.criminalPast', false)) {
+      return false;
+    }
+
+    if (_.get(person, 'home.mortgage', false)) {
+      if (_.get(person, 'home.mortgage.hasMissedPayment', false)) {
+        return false;
+      }
+
+      if (_.get(person, 'home.mortgage.remaining', 1000001) > 1000000) {
+        return false;
+      }
+    }
+
+    return true;
+
+    /*
+    if (person.age < 18) {
+      return false;
+    }
+
     if (person.company === undefined || person.company.wage === undefined || person.company.wage < 1500) {
       return false
     }
@@ -37,9 +62,10 @@
     }
 
     return true;
+    */
   }
 
-  describe('Lab 12', () => {
+  describe('Lab 27', () => {
     it('should accept a valid person', () => {
       const person = {
         name: "Bobby Droptables",

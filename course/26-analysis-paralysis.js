@@ -27,6 +27,13 @@
     Try to rewrite the following function using lodash:
   */
   function analyze(numbers) {
+    // The analysis is performing some standard lodash functions on the numbers
+    const analysis = _.over([_.first, _.last, _.mean, _.max, _.min])(numbers);
+
+    // The return value is an object so zip the expected keys with the values.
+    return _.zipObject(['first', 'last', 'average', 'high', 'low'], analysis);
+
+    /*
     const analysis = {};
 
     analysis.first = numbers[0];
@@ -51,9 +58,10 @@
     analysis.average = total / numbers.length;
 
     return analysis;
+    */
   }
 
-  describe('Lab 22', () => {
+  describe('Lab 26', () => {
     it('should know how to analyze the numbers', () => {
       const expected = {
         first: 42,

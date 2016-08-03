@@ -14,6 +14,17 @@
     Try to rewrite the following function using lodash:
   */
   function likeness(wordA, wordB) {
+    return _([wordA, wordB])
+      // For each word get the individual letters in an array.
+      .map((word) => _.split(word, ''))
+      // Now put the first letter of A with the first letter of B etc etc.
+      .thru(([lettersA, lettersB]) => _.zip(lettersA, lettersB))
+      // Now only keep the the pairs which are equal to each other
+      .filter(([letterA, letterB]) => _.isEqual(letterA, letterB))
+      // The likeness factor is the size of the collection
+      .size();
+
+    /*
     let likenessFactor = 0;
 
     let largerWord = null;
@@ -37,9 +48,10 @@
     }
 
     return likenessFactor;
+    */
   };
 
-  describe('Lab 26', () => {
+  describe('Lab 20', () => {
     it('should know how to calculate the likeness of two words.', function () {
       expect(likeness('boom', 'boom')).toBe(4);
       expect(likeness('aap', 'oom')).toBe(0);

@@ -15,6 +15,13 @@
 
       apiCallWithUrlAndQuery = function() { return 'hahahah'; };
   */
+  const apiCallWithUrlAndQuery = _.partial(apiCall, _, _, 0, false);
+
+  const apiCallWithUrlAndDelay = _.partial(apiCall, _, '', _, false);
+
+  const apiCallWithUrlAndQueue = _.partial(apiCall, _, '', 1000, _);
+
+  /*
   const apiCallWithUrlAndQuery = function(url, params) {
     return apiCall(url, params, 0, false);
   };
@@ -26,6 +33,7 @@
   const apiCallWithUrlAndQueue = function(url, useQueue) {
     return apiCall(url, '', 1000, useQueue);
   };
+  */
 
   /* ===== DO NOT CHANGE THIS FUNCTION ===== */
   function apiCall(url, query, delayBy, useQueue) {
@@ -40,7 +48,7 @@
     }
   };
 
-  describe('Lab 23', () => {
+  describe('Lab 22', () => {
     it('should know how to create "apiCallWithUrlAndQuery"', () => {
       const expected = {
         delayBy: 0,

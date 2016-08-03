@@ -9,6 +9,9 @@
     Try to rewrite the following function using lodash:
   */
   function cacheFunction(fn) {
+    return _.memoize(fn, (...args) => args.join('-'));
+
+    /*
     const cache = {};
 
     return function(...args) {
@@ -24,6 +27,7 @@
         return value;
       }
     }
+    */
   }
 
   /* ===== DO NOT CHANGE THE CODE BELOW ===== */
@@ -39,7 +43,7 @@
     return { wage: wage * raise, id: id++ };
   }
 
-  describe('Lab 17', () => {
+  describe('Lab 08', () => {
     it('should use cache when it has already been calculated.', () => {
       const cachedCalculateWageAfterRaise = cacheFunction(calculateWageAfterRaise);
 

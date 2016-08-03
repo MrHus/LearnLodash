@@ -50,6 +50,18 @@
     Try to rewrite the following function using lodash:
   */
   function giveRaises(employees) {
+    return _.map(employees, (employee) => {
+      const wage = employee.wage * RAISE[employee.title];
+
+      const minWage = MIN_WAGE[employee.title];
+      const maxWage = MAX_WAGE[employee.title];
+
+      employee.wage = _.clamp(wage, minWage, maxWage);
+
+      return employee;
+    });
+
+    /*
     for (let i = 0; i < employees.length; i++) {
       const employee = employees[i];
 
@@ -66,9 +78,10 @@
     }
 
     return employees;
+    */
   }
 
-  describe('Lab 14', () => {
+  describe('Lab 12', () => {
     it('should know how to give raises', () => {
       const expected = [
         {

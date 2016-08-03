@@ -22,6 +22,9 @@
     Try to rewrite the following function using lodash:
   */
   function isAuthorized(userRoles, requiredRole) {
+    return _.max(userRoles) >= requiredRole;
+
+    /*
     let maxUserRole = 0;
 
     // determine the highest role level the user has
@@ -33,9 +36,10 @@
     }
 
     return maxUserRole >= requiredRole;
+    */
   }
 
-  describe('Lab 4', () => {
+  describe('Lab 10', () => {
     it('should give the user access if the user has a role', () => {
       expect(isAuthorized([ROLE.ADMIN], ROLE.ADMIN)).toBe(true);
     });

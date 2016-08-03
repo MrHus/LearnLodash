@@ -15,6 +15,17 @@
     Try to rewrite the following functions using lodash:
   */
   function urlBuilder(url, params) {
+    return _(params)
+      // Turn into pairs, so we have the index in the reduce.
+      .toPairs()
+      // Now we simply append each param pair to the url
+      .reduce((url, [name, value], index) => {
+        const separator = index === 0 ? '?' : '&';
+
+        return `${url}${separator}${name}=${value}`;
+      }, url);
+
+    /*
     let first = true;
 
     for (const name in params) {
@@ -30,6 +41,7 @@
     }
 
     return url;
+    */
   };
 
   describe('Lab 24', () => {

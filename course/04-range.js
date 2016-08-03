@@ -18,6 +18,9 @@
     See if you can rewrite this function to use a lodash utility instead.
   */
   function range(start, end, step=1) {
+    return _.range(start, end, step);
+
+    /*
     let values = [];
 
     if (end > start) {
@@ -31,9 +34,10 @@
     }
 
     return values;
+    */
   }
 
-  describe('Lab 3', () => {
+  describe('Lab 04', () => {
     it('should know how to create ranges', () => {
       expect(range(0, 3)).toEqual([0, 1, 2]);
     });

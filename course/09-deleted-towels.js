@@ -39,6 +39,30 @@
     Try to rewrite the following function using lodash:
   */
   function getDeletedIds(full, partial) {
+    /*
+      Solution A:
+
+      _.difference does not work with arrays of objects so covert them
+      both to arrays of id's which are numbers.
+    */
+    const fullIds = _.map(full, 'id');
+    const partialIds = _.map(partial, 'id');
+
+    return _.difference(fullIds, partialIds);
+
+    /*
+      Solution B:
+
+      We could use 'differenceBy' to compare two objects based on the
+      id. But then we would end up with the full array, so then we
+      would have to do a .map just to get the id's.
+    */
+    return _(full)
+      .differenceBy(partial, 'id')
+      .map('id')
+      .value();
+
+    /*
     const deleted = [];
 
     for (let i = 0; i < full.length; i++) {
@@ -60,9 +84,10 @@
     }
 
     return deleted;
+    */
   }
 
-  describe('Lab 29', () => {
+  describe('Lab 09', () => {
     it('should know how to get the ids of the towels that were deleted', () => {
       const expected = [2, 4];
 

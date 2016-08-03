@@ -86,3 +86,8 @@ break on the code.
 Once you are on the breakpoint you can start digging around in the
 `console` by entering expressions there. You should have access to
 all variables which are on the scope of the current breakpoint.
+
+# Solutions
+
+The solutions can be found in the solutions branch. It is recommended
+to view the solutions after the workshop is over.

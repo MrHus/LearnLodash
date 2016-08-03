@@ -8,6 +8,9 @@
     Try to rewrite the following function using lodash:
   */
   function wordCount(sentence) {
+    return _.countBy(_.words(sentence));
+
+    /*
     const frequency = {};
 
     const words = sentence.split(' ');
@@ -22,9 +25,10 @@
     }
 
     return frequency;
+    */
   }
 
-  describe('Lab 21', () => {
+  describe('Lab 18', () => {
     it('should know how to count words', () => {
       const expected = {
         'Buffalo': 3,

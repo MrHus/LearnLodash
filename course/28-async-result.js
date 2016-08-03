@@ -18,10 +18,10 @@
 
     There are a couple of extra rules for this lab:
 
-      1. You must call getTemperature once with 'nos', once with 'rtl'
+      1. You must call getTemperatureFrom once with 'nos', once with 'rtl'
          and once with 'cnn'.
 
-      2. You must not call getTemperature in 'sequence' they must be
+      2. You must not call getTemperatureFrom in 'sequence' they must be
          called all at once.
 
     Hint: the key is manipulating (not rewriting!) calculateAverage.
@@ -33,6 +33,26 @@
     Try to rewrite the following function using lodash:
   */
   function getAverageTemperature() {
+    // Create a curried version of calculateAverage;
+    let curriedCalculateAverage = _.curry(calculateAverage);
+
+    getTemperatureFrom('rtl', handleResponse);
+    getTemperatureFrom('cnn', handleResponse);
+    getTemperatureFrom('nos', handleResponse);
+
+    function handleResponse(value) {
+      curriedCalculateAverage = curriedCalculateAverage(value);
+
+      /*
+        After three times the 'curriedCalculateAverage' will no longer
+        be a Function but a number, because '_.curry' has done its job.
+      */
+      if (_.isNumber(curriedCalculateAverage)) {
+        averageTemperature = curriedCalculateAverage;
+      }
+    }
+
+    /*
     let rtl = null;
     let cnn = null;
     let nos = null;
@@ -60,6 +80,7 @@
         averageTemperature = calculateAverage(rtl, cnn, nos);
       }
     }
+    */
   };
 
   /* ===== DO NOT CHANGE THESE FUNCTIONS ===== */
@@ -91,7 +112,7 @@
     setTimeout(() => callback(value), after);
   }
 
-  describe('Lab 25', () => {
+  describe('Lab 28', () => {
     it('should set the "averageTemperature" value correctly.', (done) => {
       expect(averageTemperature).toBe(null);
 

@@ -8,6 +8,9 @@
     See if you can rewrite this function to use a lodash utility instead.
    */
   function camelCase(sentence) {
+    return _.camelCase(sentence);
+
+    /*
     const words = sentence.split(/\s+/);
 
     let camelCased = '';
@@ -24,9 +27,10 @@
     }
 
     return camelCased;
+    */
   }
 
-  describe('Lab 1', () => {
+  describe('Lab 01', () => {
     it('should know how to camel case sentences', () => {
       expect(camelCase('hello world')).toBe("helloWorld");
     });

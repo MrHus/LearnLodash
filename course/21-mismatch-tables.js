@@ -54,6 +54,16 @@
     Try to rewrite the following function using lodash:
   */
   function flipCollection(collection) {
+    // First collect all 'keys' from the first object from the collection.
+    const keys = _.keys(_.first(collection));
+
+    // Now collect only the values from each object in the collection.
+    const values = _.map(collection, _.values);
+
+    // Now zip all arrays together to form the desired output.
+    return _.zip(keys, ...values);
+
+    /*
     const array = [];
 
     let keyIndex = 0;
@@ -75,9 +85,10 @@
     }
 
     return array;
+    */
   }
 
-  describe('Lab 27', () => {
+  describe('Lab 21', () => {
     it('should know how to flip a collection to a two dimensional array.', () => {
       const expected = [
         ["id", 1, 2, 3, 4],

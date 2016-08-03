@@ -11,6 +11,9 @@
     Try to rewrite the following function using lodash:
   */
   function mergeCar(modalCar, car) {
+    return _.merge(car, modalCar);
+
+    /*
     function mergeObject(destination, target) {
       for (let key in target) {
         if (target.hasOwnProperty(key)) {
@@ -37,9 +40,10 @@
     newCar = mergeObject(newCar, car);
     newCar = mergeObject(newCar, modalCar);
     return newCar;
+    */
   }
 
-  describe('Lab 13', () => {
+  describe('Lab 02', () => {
     it('should know how to merge two car models', () => {
       const modalCar = {
         owner: {

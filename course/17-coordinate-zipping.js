@@ -20,6 +20,11 @@
   function zipCoordinates(coordinates) {
     const { xs, ys } = coordinates;
 
+    return _.zipWith(xs, ys, (x, y) => ({ x, y }));
+
+    /*
+    const { xs, ys } = coordinates;
+
     const zipped = [];
 
     for(let i = 0; i < xs.length; i++) {
@@ -30,9 +35,10 @@
     }
 
     return zipped;
+    */
   }
 
-  describe('Lab 9', () => {
+  describe('Lab 17', () => {
     it('should know how to zip the x and y coordinates', () => {
       expect(zipCoordinates(coordinates)).toEqual([
         {

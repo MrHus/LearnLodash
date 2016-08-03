@@ -45,6 +45,12 @@
     Try to rewrite the following function using lodash:
   */
   function joinCarsAndPersons(cars, persons) {
+    return _.map(cars, (car) => {
+      const person = _.find(persons, (person) => car.owner === person.name);
+      return { car, person };
+    });
+
+    /*
     const joined = [];
 
     for(let i = 0; i < cars.length; i++) {
@@ -61,9 +67,10 @@
     }
 
     return joined;
+    */
   }
 
-  describe('Lab 8', () => {
+  describe('Lab 14', () => {
     it('should know how to join the cars and persons', () => {
       expect(joinCarsAndPersons(cars, persons)).toEqual([
         {

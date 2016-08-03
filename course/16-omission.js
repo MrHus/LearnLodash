@@ -59,6 +59,20 @@
     Try to rewrite the following function using lodash:
   */
   function removeSensitiveData(portfolio) {
+    // We only want to change the 'books' so we can do a _.mapValues instead of a _.map
+    return _.mapValues(portfolio, (books) => {
+      /*
+        _.omit takes an array of properties it needs to ignore.
+        There is also _.pick which is its polar opposite, it takes
+        an array of properties to keep.
+
+        How do you decide between _.pick and _.omit: use whatever
+        produces the smallest array of properties.
+      */
+      return _.map(books, (book) => _.omit(book, ['profit', 'advance']));
+    });
+
+    /*
     for (const genre in portfolio) {
       if (portfolio.hasOwnProperty(genre)) {
         const books = portfolio[genre];
@@ -72,9 +86,10 @@
     }
 
     return portfolio;
+    */
   }
 
-  describe('Lab 20', () => {
+  describe('Lab 16', () => {
     it('should know how remove the sensitive sales data from the portfolio', () => {
       const expected = {
         thrillers: [

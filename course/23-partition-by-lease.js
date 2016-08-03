@@ -24,6 +24,9 @@
     Try to rewrite the following function using lodash:
   */
   function partitionByLease(persons) {
+    return _.groupBy(persons, (p) => p.lease ? 'hasLease' : 'noLease');
+
+    /*
     const hasLease = [];
     const noLease = [];
 
@@ -38,9 +41,10 @@
     }
 
     return { hasLease, noLease };
+    */
   }
 
-  describe('Lab 11', () => {
+  describe('Lab 23', () => {
     it('should know how to partition by if the user has a lease car', () => {
       expect(partitionByLease(persons)).toEqual({
         hasLease: [

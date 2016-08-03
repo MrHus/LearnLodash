@@ -36,6 +36,26 @@
     Try to rewrite the following function using lodash:
   */
   function distributeCars(cars) {
+    // We prefer the 'left' side slightly more when the cars are uneven.
+    const middle = (cars.length / 2) + 1;
+
+    const left = _.take(cars, middle);
+    const right = _.drop(cars, middle);
+
+    return { left, right };
+
+    /*
+    // Alternative solution, has one less line but is slightly more complex.
+
+    // We prefer the 'left' side slightly more when the cars are uneven.
+    const middle = (cars.length / 2) + 1;
+
+    const [left, right] = _.over(_.take, _.drop)(cars, middle);
+
+    return { left, right };
+    */
+
+    /*
     const splitted = { left: [], right: []};
 
     const middle = cars.length / 2;
@@ -51,9 +71,10 @@
     }
 
     return splitted;
+    */
   }
 
-  describe('Lab 7', () => {
+  describe('Lab 19', () => {
     it('should know how to distribute the cars', () => {
       expect(distributeCars(cars)).toEqual({
         left: [
